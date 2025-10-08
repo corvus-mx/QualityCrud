@@ -5,32 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quality Management System</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
   <div id="toast-container" class="fixed top-4 right-4 z-50"></div>
 
   <div class="container mx-auto px-4 py-8">
-    <!-- Header -->
     <div class="bg-white rounded-xl shadow-xl p-8 mb-8 border-t-4 border-blue-500">
       <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent mb-6 text-center">
         Quality Management System
       </h1>
       <div class="flex justify-center gap-4">
-        <button onclick="window.router.navigate('general-info')"
+        <button hx-get="/general-info" hx-target="#main-content" hx-swap="innerHTML"
                 class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg transition-all transform hover:scale-105">
-          📊 General Info
+          General Info
         </button>
-        <button onclick="window.router.navigate('dmt-list')"
+        <button hx-get="/dmt/list" hx-target="#main-content" hx-swap="innerHTML"
                 class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-10 rounded-xl shadow-lg transition-all transform hover:scale-105">
-          📈 DMT Records
+          DMT Records
         </button>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <div id="main-content"></div>
+    <div id="main-content" hx-get="/home" hx-trigger="load" hx-swap="innerHTML"></div>
   </div>
-
-  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
